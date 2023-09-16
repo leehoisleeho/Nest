@@ -6,8 +6,8 @@ import { UpdateDoubanDto } from './dto/update-douban.dto'
 @Controller('weibo')
 export class WeiboController {
   constructor(private readonly weiboService: WeiboService) {}
-  @Get('find')
-  find() {
-    return this.weiboService.find()
+  @Get('find/:page')
+  find(@Param('page') page: number) {
+    return this.weiboService.find(page)
   }
 }
