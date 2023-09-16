@@ -1,6 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
+import { ParseIntPipe, Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { UserService } from './user.service'
 import { ApiTags } from '@nestjs/swagger'
+import { CreateUserDto } from './dto/create-user.dto'
+import { UserPipe } from './user.pipe'
 
 @ApiTags('用户')
 @Controller('user')
@@ -13,20 +15,20 @@ export class UserController {
   }
 
   @Get('findOne/:id')
-  async findOne(@Param('id') id: any) {
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    console.log(typeof id)
     const result = await this.userService.findOne(id)
     return result
   }
 
   @Post('create')
-  create(@Body() data: any) {
+  create(@Body() data: CreateUserDto) {
     const result = this.userService.create(data)
     return result
   }
 
   @Delete('delete/:id')
   async delete(@Param('id') id: number) {
-    id = Number(id)
     const result = await this.userService.delete(id)
     return result
   }

@@ -21,7 +21,7 @@ npm -g install bun //相信我用了bun之后，这是你最后一次用npm😂
 $ bun install
 ```
 
-## 运行
+## 运行bun
 ```bash
 # development
 $ bun run start

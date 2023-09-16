@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from './app.module'
+import { ValidationPipe } from '@nestjs/common'
 import * as serveStatic from 'serve-static'
 import { join } from 'path'
 
@@ -16,7 +17,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options)
   SwaggerModule.setup('api', app, document)
   /* Swagger文档结束 */
-
+  // 全局管道
+  app.useGlobalPipes(new ValidationPipe())
   app.setGlobalPrefix('api')
   app.use(
     '/public',
@@ -24,7 +26,10 @@ async function bootstrap() {
       extensions: ['jpg', 'jpeg', 'png'],
     }),
   )
-  await app.listen(3000)
+  app.enableCors({
+    origin: '*',
+  })
+  await app.listen(3002)
 }
 
 bootstrap()

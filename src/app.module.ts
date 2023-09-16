@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module'
 import { CatModule } from './cat/cat.module'
 import { LoggerMiddleware } from './logger/logger.middleware'
 import { UserController } from './user/user.controller'
+import { DoubanModule } from './douban/douban.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { UserController } from './user/user.controller'
     FileModule,
     UserModule,
     CatModule,
+    DoubanModule,
   ],
   controllers: [FileController],
   providers: [FileService],
