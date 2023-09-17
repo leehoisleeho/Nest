@@ -5,7 +5,7 @@
 
 ## Nest.js
 
-> Nest.js的logo太丑了，我换了只我喜欢的小猫作为logo
+> Nest.js的logo太丑了，我换了只我喜欢的小猫作为logo。
 
 ## bun
 🚀 用bun启动速度快了好几倍
